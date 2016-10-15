@@ -28,31 +28,20 @@ public class HeBing extends PrintStream{
 		 super(out);  
 	     this.text = text;  
 	}
+	@SuppressWarnings("resource")
 	public void start(String inPath, String outPath){
 		System.err.println("开始合并...");
 		Long sys1 = System.currentTimeMillis();
-		File file = new File(inPath);
-		File outFile = new File(outPath);
-		if(outFile.exists()){
-			outFile.delete();
-			System.out.println("目标文件已存在，覆盖生成中...");
-		}
-		if(file.isDirectory()){
-			File[] file_list = file.listFiles();
-			//file_list = arr_sort(file_list);
-//			List<File> fileList = Arrays.asList(file_list);
-//			Collections.sort(fileList, new Comparator<File>() {
-//			    @Override
-//			    public int compare(File o1, File o2) {
-//			        if (o1.isDirectory() && o2.isFile())
-//			            return -1;
-//			        if (o1.isFile() && o2.isDirectory())
-//			            return 1;
-//			        return o2.getName().compareTo(o1.getName());
-//			    }
-//			});
-			FileChannel outChannel = null;
-			try{
+		FileChannel outChannel = null;
+		try{
+			File file = new File(inPath);
+			File outFile = new File(outPath);
+			if(outFile.exists()){
+				outFile.delete();
+				System.out.println("目标文件已存在，覆盖生成中...");
+			}
+			if(file.isDirectory()){
+				File[] file_list = file.listFiles();
 				outChannel = new FileOutputStream(outFile).getChannel();
 				for(File f : file_list){
 					String lastName = f.getName();
@@ -78,21 +67,32 @@ public class HeBing extends PrintStream{
 				Long sys2 = System.currentTimeMillis();
 				System.err.println("合并成功，耗时："+(sys2-sys1)+"ms.");
 				System.err.println("文件目录："+outFile.getPath());
-			}catch(Exception e){
-				e.printStackTrace();
-			}finally{
-				if(outChannel!=null){
-					try {
-						outChannel.close();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			}
+		}catch(Exception e){
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
+		}finally{
+			if(outChannel!=null){
+				try {
+					outChannel.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}
 	}
-	
+	public void openFilePath(String filePath){
+		try {
+			File file=new File(filePath); 
+			Runtime.getRuntime().exec(
+			"rundll32 SHELL32.DLL,ShellExec_RunDLL "
+			+ "Explorer.exe /select," + file.getAbsolutePath());
+		} catch (IOException e) {
+			//e.printStackTrace();
+			System.out.println("导出文件夹路径不合法！");
+		}
+	}
 	 /** 
      * 在这里重截,所有的打印方法都要调用的方法 
      */  
@@ -112,6 +112,7 @@ public class HeBing extends PrintStream{
 	 * @author 赵鹏展
 	 * @date 2016-10-14 上午11:33:01
 	 */
+	@SuppressWarnings("unused")
 	private File[] arr_sort(File[] file_list) {
 		File[] num_arr = new File[file_list.length];
 		File[] file_arr = new File[file_list.length];
