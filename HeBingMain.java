@@ -22,38 +22,38 @@ public class HeBingMain extends JFrame{
 	
 	public int width  = 800;
 	public int height = 550;
-	public String fileName = "ºÏ²¢½á¹û.txt";
+	public String fileName = "åˆå¹¶ç»“æœ.txt";
 	String inPath = null;
 	String outPath = null;
 	JTextField jtf1 = null;
 	JTextField jtf2 = null;
 	JFrame jframe = null;
-	JTextArea jta;//¶àĞĞÎÄ±¾¿ò
+	JTextArea jta;//å¤šè¡Œæ–‡æœ¬æ¡†
 
 	public HeBingMain(){
 		super();
-		jframe = new JFrame("ºÏ²¢txt");//ÈİÆ÷
-		JLabel jl1 = new JLabel("ĞèÒªºÏ²¢µÄÎÄ¼şÄ¿Â¼:");
-		JLabel jl2 = new JLabel("ĞèÒªµ¼³öµÄÎÄ¼şÄ¿Â¼:");
+		jframe = new JFrame("åˆå¹¶txt");//å®¹å™¨
+		JLabel jl1 = new JLabel("éœ€è¦åˆå¹¶çš„æ–‡ä»¶ç›®å½•:");
+		JLabel jl2 = new JLabel("éœ€è¦å¯¼å‡ºçš„æ–‡ä»¶ç›®å½•:");
 		jtf1 = new JTextField(30);
 		jtf2 = new JTextField(30);
 		
-		JButton jb1 = new JButton("Ñ¡ÔñÄ¿Â¼");
+		JButton jb1 = new JButton("é€‰æ‹©ç›®å½•");
 		jb1.addActionListener(new button1Action());
 		
-		JButton jb2 = new JButton("Ñ¡ÔñÄ¿Â¼");
+		JButton jb2 = new JButton("é€‰æ‹©ç›®å½•");
 		jb2.addActionListener(new button2Action());
 		
-		JButton jb3 = new JButton("ºÏ²¢");
+		JButton jb3 = new JButton("åˆå¹¶");
 		jb3.addActionListener(new button3Action());
 		
-		JButton jb4 = new JButton("´ò¿ªÎÄ¼ş¼Ğ");
+		JButton jb4 = new JButton("æ‰“å¼€æ–‡ä»¶å¤¹");
 		jb4.addActionListener(new button4Action());
 		
-		JPanel jp1 = new JPanel(/*new GridLayout(1,3)*/);//µÚÒ»ĞĞ£¨Èı¸ö¿Ø¼ş,Ò»ĞĞÈıÁĞ£© 
-		JPanel jp2 = new JPanel(/*new GridLayout(1,3)*/);//µÚ¶şĞĞ £¨Èı¸ö¿Ø¼ş£© 
-		JPanel jp3 = new JPanel(new FlowLayout(FlowLayout.CENTER));//µÚÈıĞĞ£¨Ò»¸ö°´Å¥£¬¾ÓÖĞÏÔÊ¾£© 
-		JPanel up = new JPanel(new GridLayout(3,1));//ÉÏÃæ
+		JPanel jp1 = new JPanel(/*new GridLayout(1,3)*/);//ç¬¬ä¸€è¡Œï¼ˆä¸‰ä¸ªæ§ä»¶,ä¸€è¡Œä¸‰åˆ—ï¼‰ 
+		JPanel jp2 = new JPanel(/*new GridLayout(1,3)*/);//ç¬¬äºŒè¡Œ ï¼ˆä¸‰ä¸ªæ§ä»¶ï¼‰ 
+		JPanel jp3 = new JPanel(new FlowLayout(FlowLayout.CENTER));//ç¬¬ä¸‰è¡Œï¼ˆä¸€ä¸ªæŒ‰é’®ï¼Œå±…ä¸­æ˜¾ç¤ºï¼‰ 
+		JPanel up = new JPanel(new GridLayout(3,1));//ä¸Šé¢
 		
 		jp1.add(jl1);
 		jp1.add(jtf1);
@@ -62,7 +62,7 @@ public class HeBingMain extends JFrame{
 		jp2.add(jl2);
 		jp2.add(jtf2);
 		jp2.add(jb2);
-//		
+		
 		jp3.add(jb3);
 		jp3.add(jb4);
 		
@@ -70,34 +70,34 @@ public class HeBingMain extends JFrame{
 		up.add(jp2);
 		up.add(jp3);
 		
-		//ÎÄ±¾Óò
+		//æ–‡æœ¬åŸŸ
 		jta = new JTextArea();
 		jta.setEditable(false);
 		JScrollPane down = new JScrollPane(jta);
 		
-		//·Ö¸îÃæ°å(°üº¬ÉÏÃæºÍÏÂÃæ)
+		//åˆ†å‰²é¢æ¿(åŒ…å«ä¸Šé¢å’Œä¸‹é¢)
 		JSplitPane all = new JSplitPane(JSplitPane.VERTICAL_SPLIT,up,down);
 		
-		//½«¿ØÖÆ×é¼şÌí¼Óµ½ÈİÆ÷ÖĞ
+		//å°†æ§åˆ¶ç»„ä»¶æ·»åŠ åˆ°å®¹å™¨ä¸­
 		this.add(all);
-		//ÉèÖÃÍø¸ñ²¼¾Ö£¬²ÎÊı·Ö±ğ±íÊ¾£º¼¸ĞĞ£¬¼¸ÁĞ£¬Ë®Æ½¼ä¾à£¬´¹Ö±¼ä¾à 
+		//è®¾ç½®ç½‘æ ¼å¸ƒå±€ï¼Œå‚æ•°åˆ†åˆ«è¡¨ç¤ºï¼šå‡ è¡Œï¼Œå‡ åˆ—ï¼Œæ°´å¹³é—´è·ï¼Œå‚ç›´é—´è· 
 		//this.setLayout(new GridLayout(2,1,1,1));
-		this.setResizable(false);//resizeableÖµÎªtrueÊ±£¬±íÊ¾ÔÚÉú³ÉµÄ´°Ìå¿ÉÒÔ×ÔÓÉ¸Ä±ä´óĞ¡£»
-		this.setVisible(true);//trueÎª´°¿Ú¿É¼û
+		this.setResizable(false);//resizeableå€¼ä¸ºtrueæ—¶ï¼Œè¡¨ç¤ºåœ¨ç”Ÿæˆçš„çª—ä½“å¯ä»¥è‡ªç”±æ”¹å˜å¤§å°ï¼›
+		this.setVisible(true);//trueä¸ºçª—å£å¯è§
 		this.setSize(width, height);
 		this.setLocation(Util.getWindowCenterWidth(width), Util.getWindowCenterHeight(height));
-		this.setTitle("ºÏ²¢txt");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Ò»¶¨ÒªÉèÖÃ¹Ø±Õ
+		this.setTitle("åˆå¹¶txt");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ä¸€å®šè¦è®¾ç½®å…³é—­
 	}
 	
 	/**
-     * ¼àÌıÆ÷ÀàÊµÏÖActionListener½Ó¿Ú£¬Ö÷ÒªÊµÏÖactionPerformed·½·¨
+     * ç›‘å¬å™¨ç±»å®ç°ActionListeneræ¥å£ï¼Œä¸»è¦å®ç°actionPerformedæ–¹æ³•
      */
     private class button1Action implements ActionListener{
     	 public void actionPerformed(ActionEvent e){
         	 JFileChooser fc = new JFileChooser();
-			  fc.setDialogTitle("ÇëÑ¡ÔñÎÄ¼şËùÔÚµÄÄ¿Â¼...");
-			  fc.setApproveButtonText("È·¶¨");
+			  fc.setDialogTitle("è¯·é€‰æ‹©æ–‡ä»¶æ‰€åœ¨çš„ç›®å½•...");
+			  fc.setApproveButtonText("ç¡®å®š");
 			  fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			  if (JFileChooser.APPROVE_OPTION == fc.showOpenDialog(jframe)) {
 			      inPath=fc.getSelectedFile().getPath();
@@ -107,13 +107,13 @@ public class HeBingMain extends JFrame{
     }
     
     /**
-     * ¼àÌıÆ÷ÀàÊµÏÖActionListener½Ó¿Ú£¬Ö÷ÒªÊµÏÖactionPerformed·½·¨
+     * ç›‘å¬å™¨ç±»å®ç°ActionListeneræ¥å£ï¼Œä¸»è¦å®ç°actionPerformedæ–¹æ³•
      */
     private class button2Action implements ActionListener{
         public void actionPerformed(ActionEvent e){
         	 JFileChooser fc = new JFileChooser();
-			  fc.setDialogTitle("ÇëÑ¡ÔñÎÄ¼şËùÔÚµÄÄ¿Â¼...");
-			  fc.setApproveButtonText("È·¶¨");
+			  fc.setDialogTitle("è¯·é€‰æ‹©æ–‡ä»¶æ‰€åœ¨çš„ç›®å½•...");
+			  fc.setApproveButtonText("ç¡®å®š");
 			  fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			  if (JFileChooser.APPROVE_OPTION == fc.showOpenDialog(jframe)) {
 			      outPath=fc.getSelectedFile().getPath();
@@ -123,16 +123,16 @@ public class HeBingMain extends JFrame{
     }
     
     /**
-     * ¼àÌıÆ÷ÀàÊµÏÖActionListener½Ó¿Ú£¬Ö÷ÒªÊµÏÖactionPerformed·½·¨
+     * ç›‘å¬å™¨ç±»å®ç°ActionListeneræ¥å£ï¼Œä¸»è¦å®ç°actionPerformedæ–¹æ³•
      */
     private class button3Action implements ActionListener{
         public void actionPerformed(ActionEvent e){
         	if(jtf1.getText()==null || "".equals(jtf1.getText())){
-        		JOptionPane.showMessageDialog(null, "¡¾ĞèÒªºÏ²¢µÄÎÄ¼şÄ¿Â¼¡¿²»ÄÜÎª¿Õ£¡", "×¢Òâ", JOptionPane.WARNING_MESSAGE);
+        		JOptionPane.showMessageDialog(null, "ã€éœ€è¦åˆå¹¶çš„æ–‡ä»¶ç›®å½•ã€‘ä¸èƒ½ä¸ºç©ºï¼", "æ³¨æ„", JOptionPane.WARNING_MESSAGE);
         		return;
         	}
         	if(jtf2.getText()==null || "".equals(jtf2.getText())){
-        		JOptionPane.showMessageDialog(null, "¡¾ĞèÒªµ¼³öµÄÎÄ¼şÄ¿Â¼¡¿²»ÄÜÎª¿Õ£¡", "×¢Òâ", JOptionPane.WARNING_MESSAGE);
+        		JOptionPane.showMessageDialog(null, "ã€éœ€è¦å¯¼å‡ºçš„æ–‡ä»¶ç›®å½•ã€‘ä¸èƒ½ä¸ºç©ºï¼", "æ³¨æ„", JOptionPane.WARNING_MESSAGE);
         		return;
         	}
         	HeBing hb = new HeBing(System.out, jta);
@@ -147,7 +147,7 @@ public class HeBingMain extends JFrame{
     }
     
     /**
-     * ¼àÌıÆ÷ÀàÊµÏÖActionListener½Ó¿Ú£¬Ö÷ÒªÊµÏÖactionPerformed·½·¨
+     * ç›‘å¬å™¨ç±»å®ç°ActionListeneræ¥å£ï¼Œä¸»è¦å®ç°actionPerformedæ–¹æ³•
      */
     private class button4Action implements ActionListener{
         public void actionPerformed(ActionEvent e){
